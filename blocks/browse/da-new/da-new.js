@@ -2,6 +2,7 @@ import { LitElement, html } from 'da-lit';
 import { saveToDa } from '../../shared/utils.js';
 import { getNx } from '../../../scripts/utils.js';
 import getEditPath from '../shared.js';
+import createForm from '../form/create.js';
 
 // Styles & Icons
 const { default: getStyle } = await import(`${getNx()}/utils/styles.js`);
@@ -151,6 +152,11 @@ export default class DaNew extends LitElement {
     if (input) input.classList.remove(INPUT_ERROR);
   }
 
+  handleFormType() {
+    this._createType = 'form';
+    createForm(this.fullpath);
+  }
+
   get _disabled() {
     if (!this.permissions) return true;
     return !this.permissions.some((permission) => permission === 'write');
@@ -161,6 +167,9 @@ export default class DaNew extends LitElement {
       <div class="da-actions-create ${this._createShow}">
         <button class="da-actions-new-button" @click=${this.handleCreateMenu} ?disabled=${this._disabled}>New</button>
         <ul class="da-actions-menu">
+          <li class=da-actions-menu-item>
+            <button data-type=form @click=${this.handleFormType}>Adaptive Form</button>
+          </li>
           <li class=da-actions-menu-item>
             <button data-type=folder @click=${this.handleNewType}>Folder</button>
           </li>
