@@ -354,8 +354,9 @@ class CreateForm extends LitElement {
       const editUrl = `/edit#${this.formPath}/${encodeURIComponent(formData.formName)}`;
       console.log('Form created successfully, opening in new tab:', editUrl);
       window.open(`${editUrl}/brief`, '_blank');
-      window.open(`${editUrl}/form.json`.replace('edit', 'sheet'), '_blank');
+      window.open(`${editUrl}/form`.replace('edit', 'sheet'), '_blank');
       window.open(`${editUrl}`, '_blank');
+      this.hide();
     } catch (error) {
       console.error('Form creation failed:', error);
       // Show error using spectrum toast
