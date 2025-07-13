@@ -168,6 +168,9 @@ export default class DaNew extends LitElement {
         <button class="da-actions-new-button" @click=${this.handleCreateMenu} ?disabled=${this._disabled}>New</button>
         <ul class="da-actions-menu">
           <li class=da-actions-menu-item>
+            <button data-type=form @click=${this.handleFormType}>Adaptive Form</button>
+          </li>
+          <li class=da-actions-menu-item>
             <button data-type=folder @click=${this.handleNewType}>Folder</button>
           </li>
           <li class=da-actions-menu-item>
@@ -181,9 +184,6 @@ export default class DaNew extends LitElement {
           </li>
           <li class=da-actions-menu-item>
             <button data-type=link @click=${this.handleNewType}>Link</button>
-          </li>
-          <li class=da-actions-menu-item>
-            <button data-type=form @click=${this.handleFormType}>Adaptive Form</button>
           </li>
         </ul>
         <div class="da-actions-input-container">
